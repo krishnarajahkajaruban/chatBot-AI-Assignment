@@ -5,22 +5,30 @@ body {
   scroll-behavior: smooth;
   font-family: 'Poppins', sans-serif !important;
   background: rgba(213, 223, 235, 255);
+  background-color: #dbeefa !important;
 }
 
 .header-area {
-  width: 100%;
+  width: 99%;
   position: fixed;
-  top: 0px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 99;
-  border-radius: 0px !important;
+  border-radius: 20px !important;
   overflow: hidden;
   box-shadow: 0px 5px 10px #ffffff1c;
+  transition: ease 0.5s;
+}
+
+.header-area.scrolled {
+  top: 0px !important;
+  border-radius: 0px !important;
+  width: 100% !important;
 }
 
 .header-area nav {
-  background-color: #1616169f;
+  background-color: #111a21ee;
   transition: all 0.5s;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -54,7 +62,7 @@ body {
 }
 
 .header-area nav .logo-link img {
-  width: 45px;
+  width: 50px;
 }
 
 .section-padding {
@@ -87,24 +95,27 @@ body {
 .hero-section {
   overflow: hidden;
   height: 100vh;
-  background-color: #3b3b3b;
+  /* background-color: #3b3b3b; */
+  background-color: #404f5f;
+  border-bottom-right-radius: 150px;
 }
 
 .hero-container {
   border-radius: 40px;
-  border: 2px solid #7e7e7e;
+  border: 2px solid #6a7b88;
   background: url(../public/home-image.jpg) no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  height: 80vh;
+  height: 85vh;
   margin-top: 20px;
   overflow: hidden;
-  box-shadow: 0px 5px 40px #0000004d;
+  box-shadow: 0px 10px 50px #0000004d;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  border-bottom-right-radius: 150px;
 }
 
 .hero-container .hero-text-area {
@@ -121,7 +132,7 @@ body {
   position: relative;
   z-index: 2;
   text-shadow: 2px 2px 10px #000;
-  background-color: #00000070;
+  background-color: #10181fa6;
   border-radius: 20px;
   margin-bottom: 0;
   padding: 40px;
@@ -145,11 +156,86 @@ body {
 .hero-container::before {
   content: '';
   display: block;
-  background-color: #000000b7;
+  background-color: #0b151cc7;
   height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
   /* backdrop-filter: blur(5px); */
 
+}
+
+.about-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: darken;
+}
+
+.section-label {
+  border-radius: 20px;
+  color: #1465ab;
+  font-size: 14px;
+  font-weight: 700;
+  display: block;
+  text-transform: uppercase;
+}
+
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: #FFF;
+  border: 2px solid #e1342e;
+  margin-right: 5px;
+}
+
+.section-heading {
+  color: #e1342e;
+  font-size: 35px;
+  font-weight: 700;
+}
+
+.section-para {
+  font-size: 15px;
+  line-height: 26px;
+}
+
+.achievment-section {
+  border-radius: 0 200px 200px 0;
+  margin-right: 40px;
+  box-shadow: inset -40px 0px 50px #1f283057;
+}
+
+.bg-gray {
+  background-color: #404f5f;
+}
+
+.footer-section {
+  padding: 100px 0;
+  border-top-left-radius: 150px;
+  background-color: #404f5f;
+}
+
+.achievment-area {
+  width: 100%;
+  position: relative;
+}
+
+.achievment-area .achievment-count {
+  color: #e1342e;
+  font-size: 45px;
+  font-weight: 700;
+  text-shadow: 2px 2px 10px #202d3bcc;
+  margin-bottom: 2px;
+}
+
+.achievment-area .achievment {
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 500;
+  text-shadow: 2px 2px 10px #202d3bcc;
 }
