@@ -1,0 +1,155 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif !important;
+  background: rgba(213, 223, 235, 255);
+}
+
+.header-area {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  border-radius: 0px !important;
+  overflow: hidden;
+  box-shadow: 0px 5px 10px #ffffff1c;
+}
+
+.header-area nav {
+  background-color: #1616169f;
+  transition: all 0.5s;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.header-area nav .nav-section {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+.header-area nav .logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #1465ab !important;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.header-area nav .logo-link:focus {
+  outline: none;
+  border: none;
+}
+
+.header-area nav .logo-link span {
+  color: #e1342e !important;
+}
+
+.header-area nav .logo-link img {
+  width: 45px;
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+.nav-link-area {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+}
+
+.nav-link-area li {
+  list-style: none !important;
+}
+
+.nav-link-area li .nav-link {
+  text-decoration: none;
+  color: #EEE;
+  font-weight: 500;
+  transition: ease 0.5s;
+}
+
+.nav-link-area li .nav-link:hover {
+  color: #e1342e !important;
+}
+
+.hero-section {
+  overflow: hidden;
+  height: 100vh;
+  background-color: #3b3b3b;
+}
+
+.hero-container {
+  border-radius: 40px;
+  border: 2px solid #7e7e7e;
+  background: url(../public/home-image.jpg) no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  height: 80vh;
+  margin-top: 20px;
+  overflow: hidden;
+  box-shadow: 0px 5px 40px #0000004d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-container .hero-text-area {
+  width: 100%;
+  text-align: center;
+}
+
+.hero-container .hero-text-area h2 {
+  color: #EEE;
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 60px;
+  display: block;
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 2px 10px #000;
+  background-color: #00000070;
+  border-radius: 20px;
+  margin-bottom: 0;
+  padding: 40px;
+  max-width: max-content;
+  display: block;
+  margin: auto;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+}
+
+.hero-container .hero-text-area h2 span {
+  color: #e1342e;
+  font-size: 50px;
+}
+
+.hero-container .hero-text-area h2 span span {
+  color: #1465ab !important;
+}
+
+.hero-container::before {
+  content: '';
+  display: block;
+  background-color: #000000b7;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  /* backdrop-filter: blur(5px); */
+
+}
