@@ -1,17 +1,24 @@
 import "./App.css";
-import image from "./img/logo.jpg";
-import { useState, useEffect } from "react";
+import "./chat.css";
+import image from "./img/bot-icon.png";
+import bot_avatar from "./img/bot-avatar.png";
+import human_avatar from "./img/human-avatar.png";
+import { useState, useEffect, useRef } from "react";
 import axios from 'axios';
+// import $ from 'jquery';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import ScrollToBottom from 'react-scroll-to-bottom';
 
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
+  const chatInputRef = useRef(null);
 
   const [queryResponse, setQueryResponse] = useState([
-    { query: "", response: "Welcome to the Sri Lankan Travel Agency. How can I help you today?" }
+    { query: "", response: "Welcome to the P.P.T Travels & Tours. How can I help you today?" }
   ]);
   const [userMessage, setUserMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -39,7 +46,7 @@ function App() {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000,
+      duration: 1200,
       easing: 'ease-in-out',
       once: true,
       mirror: false
@@ -61,8 +68,8 @@ function App() {
   useEffect(() => {
     function animateNumber(element, targetNumber) {
       let currentNumber = 0;
-      const increment = Math.ceil(targetNumber / 100); 
-      const animationDuration = 4000; 
+      const increment = Math.ceil(targetNumber / 100);
+      const animationDuration = 4000;
 
       const updateNumber = () => {
         currentNumber += increment;
@@ -92,11 +99,24 @@ function App() {
     const observer = new IntersectionObserver(handleIntersection, {
       root: null,
       rootMargin: '0px',
-      threshold: 0.5 
+      threshold: 0.5
     });
 
     const section = document.querySelector('.achievment-area');
     observer.observe(section);
+  }, []);
+
+  useEffect(() => {
+    const handleChatKeyDown = (event) => {
+      if (event.ctrlKey && event.key === '/' && chatInputRef.current) {
+        chatInputRef.current.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleChatKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleChatKeyDown);
+    };
   }, []);
   /////
 
@@ -112,7 +132,16 @@ function App() {
       }
     }
     // setLoadingMessage(true);
-    setQueryResponse([...queryResponse, { query: (query ? query : userMessage), response: "......" }]);
+    setQueryResponse([...queryResponse, {
+      query: (query ? query : userMessage), response:
+        <div className="loading-chat">
+          <Skeleton circle={true} height={5} width={5} />
+          <Skeleton circle={true} height={5} width={5} />
+          <Skeleton circle={true} height={5} width={5} />
+          <Skeleton circle={true} height={5} width={5} />
+          <Skeleton circle={true} height={5} width={5} />
+        </div>
+    }]);
     try {
       const response = await axios.post(`${process.env.REACT_APP_BASEURL}/api/query/find-matching-response`, message);
       console.log(response.data);
@@ -176,18 +205,29 @@ function App() {
         </nav>
       </header>
 
-
       <section className="section-padding hero-section init-section" id="top">
         <div className="container-fluid">
           <div className="hero-container">
-            <div className="hero-text-area">
-              <h2 className="hero-title">Welcome to  <br /><span>P.P.T <span>Travels & Tours</span></span></h2>
+            <div className="container">
+              <div className="row">
+                <div className="col-12 col-xl-9">
+                  <h2 className="hero-title" data-aos="fade-down">Welcome to  <br /><span>P.P.T <span>Travels & Tours</span></span></h2>
+                  <h4 className="hero-sub-title mt-3" data-aos="fade-left">Discover the Ultimate Luxury Travel Experience</h4>
+                  <p className="hero-desc mt-4" data-aos="fade-up">
+                    Embark on a journey like no other with Sri Lanka's premier luxury bus service. Whether you're a local or a foreign traveler, our top-notch fleet, exceptional service, and extensive network of routes ensure that your travel experience is nothing short of extraordinary. Book your adventure with P.P.T Travels & Tours today and travel the way you deserve.
+                  </p>
+
+                  <p className="hero-desc mt-3" data-aos="fade-up" data-aos-delay="200">
+                    At P.P.T Travels & Tours, we prioritize your comfort and convenience. With years of experience and a fleet of state-of-the-art buses, we set the standard for luxury travel in Sri Lanka. Explore new destinations, enjoy seamless bookings, and experience unparalleled service with the renowned PPT Express. Start your unforgettable journey with us now.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section-padding" id="about">
+      <section className="section-padding position-relative" id="about">
         <div className="container">
           <div className="row">
             <div className="col-12 col-xxl-6 col-xl-6">
@@ -204,13 +244,13 @@ function App() {
               </div>
             </div>
             <div className="col-12 col-xxl-6 col-xl-6">
-              <img src="../bus.png" className="about-img" data-aos="fade" alt="" />
+              <img src="../bus.png" className="about-img" data-aos="zoom-in-left" data-aos-duration="1500" alt="" />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section-padding achievment-section bg-gray" data-aos="fade-right">
+      <section className="section-padding achievment-section bg-gray position-relative" data-aos="fade-right">
         <div className="container">
           <div className="row">
             <div className="col-12 col-xl-3 col-md-6">
@@ -244,6 +284,141 @@ function App() {
         </div>
       </section>
 
+      <section className="section-padding chat-section position-relative" id="chat">
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-xl-7">
+              <div className="about-us-container w-100 pe-xl-5">
+                <h6 className="section-label" data-aos="fade-left">Chat</h6>
+                <h3 className="section-heading" data-aos="zoom-out">
+                  Instant Assistance with Our ChatBot
+                </h3>
+                <p className="section-para mt-4" data-aos="fade">
+                  Welcome to the future of travel assistance with P.P.T Travels & Tours' advanced ChatBot. Designed to provide you with seamless support, our ChatBot is available 24/7 to help you with all your travel needs. Whether you're checking bookings, confirming vehicle departure times, verifying seat availability, or exploring the luxurious features of our fleet, our ChatBot makes it easy and efficient.
+                </p>
+
+                <p className="section-para" data-aos="fade">
+                  Need to make last-minute changes to your travel itinerary? Our ChatBot can handle that. Want to know more about our services and routes? Just ask. With real-time updates and instant responses, our ChatBot ensures that you have all the information you need at your fingertips.
+                </p>
+
+                <p className="section-para" data-aos="fade">
+                  At P.P.T Travels & Tours, we understand the importance of a smooth travel experience. Our ChatBot is here to simplify the process, offering you the convenience of instant assistance from the comfort of your device. Start chatting now to experience the ease and efficiency of our state-of-the-art travel support system. Your journey to comfort and luxury begins with a simple chat.
+                </p>
+              </div>
+            </div>
+
+            <div className="col-12 col-xl-5">
+              <div className="card chat--card right" id={`${window.innerWidth <= 991 ? 'chat_window' : ''}`} data-aos="fade-up" data-aos-duration="1500">
+                <div className="card-header chatting-card-header">
+                  <div className="chat-header-image-area">
+                    <img src={image} alt="Bot Icon" className="chatting-person-image" />
+                  </div>
+                  <div className="chatting-person-name">
+                    Chat Assistant <br />
+                    <span>P.P.T<span>Travels & Tours</span></span>
+                  </div>
+                </div>
+
+                {/* <div className="chatting-card-body-skeloton">
+                  <div className="chat-info-loading-skeleton">
+                    <Skeleton circle={true} height={10} width={10} />
+                    <Skeleton circle={true} height={10} width={10} />
+                    <Skeleton circle={true} height={10} width={10} />
+                    <Skeleton circle={true} height={10} width={10} />
+                    <Skeleton circle={true} height={10} width={10} />
+                  </div>
+                </div> */}
+
+                <ScrollToBottom className="card-body chatting-card-body">
+                  {queryResponse.length > 0 &&
+                    queryResponse.map((qr, index) => {
+                      return (
+                        <>
+                          {qr.query && (
+                            <div className="chat--message-container send"
+                              key={index}>
+                              <div className="chat--message-area">
+                                <div className="chat-message-content">
+                                  <p>{qr?.query}</p>
+                                </div>
+                              </div>
+                              <img src={human_avatar} alt="Human Avatar" className='chat-avatar' />
+                            </div>
+                          )}
+
+                          {qr.response &&
+                            <div className="chat--message-container receive"
+                              key={index}>
+                              <div className="chat--message-area">
+                                <div className="chat-message-content">
+                                  <p>{qr?.response}</p>
+                                </div>
+                              </div>
+                              <img src={bot_avatar} alt="Bot Avatar"
+                                className='chat-avatar' />
+                            </div>
+                          }
+                        </>
+
+
+                      );
+                    })}
+                </ScrollToBottom>
+
+                <div className="card-footer chatting-card-footer">
+                  <div className="chat-input-group">
+                    <input type="search"
+                      value={userMessage}
+                      className='form-control message-input'
+                      placeholder='Enter the message here...'
+                      onChange={handleChange}
+                      onKeyPress={(e) => {
+                        if (e.key === "Enter") {
+                          fetchResponseForQuery();
+                        }
+                      }}
+                      ref={chatInputRef}
+                      autoFocus
+                    />
+
+                    <button className='btn msg-send-btn'
+                      onClick={() => fetchResponseForQuery()}>
+                      <i class="bi bi-send"></i>
+                    </button>
+
+                    <div className="chat-short-cut">
+                      <span className="chat-short-cut-key">Ctrl + /</span>
+                    </div>
+
+                    {queries.length > 0 && userMessage && (
+                      <div className="seach-dropdown-area">
+                        {queries.map((query, index) => {
+                          return (
+                            <div
+                              className="seach-dropdown-data"
+                              key={index}
+                              onClick={() => {
+                                setQueries([]);
+                                fetchResponseForQuery(query)
+                              }}
+                            >
+                              {query}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ///////////////////////// */}
       <div className="App">
         <div className="wrapper">
           <div className="content">
@@ -334,6 +509,8 @@ function App() {
           </div>
         </div>
       </div>
+      {/* ///////////////////// */}
+
 
       <footer className="footer-section">
 
