@@ -1,0 +1,229 @@
+/* For XXL Screen (768p(1366 x 768) above - 1080p , 1920 x 1080) */
+@media (min-width: 1399.99px) {}
+
+/* For XL Screen (Laptop - HD Ready Display) */
+@media only screen and (min-width: 1199.9px) and (max-width: 1399.98px) {
+
+    .hero-container h2,
+    .hero-container h2 span {
+        font-size: 42px;
+    }
+
+    .hero-container .hero-sub-title {
+        font-size: 22px !important;
+    }
+
+    .section-padding {
+        padding: 100px 0;
+    }
+
+    .section-heading {
+        font-size: 30px;
+    }
+
+    .hero-container {
+        margin-top: 20px;
+        height: calc(85vh - 20px);
+    }
+}
+
+/* For LG (Large) Screen  */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+    .header-area nav .logo-link img {
+        width: 45px;
+    }
+
+    .header-area nav .logo-link {
+        font-size: 22px;
+    }
+
+    .hero-container h2,
+    .hero-container h2 span {
+        font-size: 40px;
+        line-height: 46px;
+    }
+
+    .hero-container .hero-sub-title {
+        font-size: 20px !important;
+    }
+
+    .hero-container .hero-desc {
+        font-size: 14px;
+    }
+
+    .section-padding {
+        padding: 100px 0;
+    }
+
+    .section-heading {
+        font-size: 30px;
+    }
+
+    .hero-container {
+        margin-top: 15px;
+        height: calc(86vh - 20px);
+    }
+}
+
+/* For MD (Medium) Screen (ipad) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .header-area nav .nav-section {
+        flex-direction: column;
+        flex-wrap: wrap;
+        row-gap: 20px;
+    }
+
+    .header-area nav .logo-link img {
+        width: 45px;
+    }
+
+    .header-area nav .logo-link {
+        font-size: 22px;
+    }
+
+    .hero-container h2,
+    .hero-container h2 span {
+        font-size: 40px;
+        line-height: 46px;
+    }
+
+    .hero-container .hero-sub-title {
+        font-size: 20px !important;
+    }
+
+    .hero-container .hero-desc {
+        font-size: 14px;
+    }
+
+    .section-padding {
+        padding:80px 0;
+    }
+
+    .section-heading {
+        font-size: 30px;
+    }
+
+    .hero-container {
+        margin-top: 80px;
+        height: calc(84vh - 20px);
+        padding: 0px 20px;
+    }
+}
+
+/* For SM (Small) Screen (Tab) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .header-area nav .nav-section {
+        flex-direction: column;
+        flex-wrap: wrap;
+        row-gap: 20px;
+    }
+
+    .header-area nav .logo-link img {
+        width: 45px;
+    }
+
+    .header-area nav .logo-link {
+        font-size: 22px;
+    }
+
+    .hero-container h2,
+    .hero-container h2 span {
+        font-size: 40px;
+        line-height: 46px;
+        text-align: center;
+    }
+
+    .hero-container .hero-sub-title {
+        font-size: 20px !important;
+        text-align: center;
+    }
+
+    .hero-container .hero-desc {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .section-padding {
+        padding: 80px 0;
+    }
+
+    .section-heading {
+        font-size: 30px;
+    }
+
+    .hero-container {
+        margin-top: 80px;
+        height: calc(86vh - 20px);
+    }
+}
+
+/* For Mobile Screen */
+@media (max-width: 575px) {
+    .header-area{
+        width: 98%;
+    }
+    .header-area nav .nav-section {
+        flex-direction: column;
+        flex-wrap: wrap;
+        row-gap: 15px;
+        padding: 15px;
+    }
+
+    .nav-link-area li .nav-link {
+        font-size: 14px;
+    }
+
+    .nav-link-area {
+        gap: 30px;
+    }
+
+    .header-area nav .logo-link img {
+        width: 40px;
+    }
+
+    .header-area nav .logo-link {
+        font-size: 22px;
+    }
+
+    .hero-container h2,
+    .hero-container h2 span {
+        font-size: 35px;
+        line-height: 40px;
+        text-align: center;
+    }
+
+    .hero-container .hero-sub-title {
+        font-size: 18px !important;
+        text-align: center;
+    }
+
+    .hero-container .hero-desc {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .hero-container .hero-desc.paragraph-2{
+        display: none;
+    }
+
+    .section-padding {
+        padding: 60px 0;
+    }
+
+    .section-heading {
+        font-size: 30px;
+    }
+
+    .hero-section,
+    .hero-container{
+        border-bottom-right-radius: 100px;
+    }
+    
+
+    .hero-container {
+        margin-top: 75px;
+        height: calc(86vh - 20px);
+        padding: 0 10px;
+    }
+}
