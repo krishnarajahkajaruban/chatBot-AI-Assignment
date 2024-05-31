@@ -217,6 +217,10 @@ body {
   margin-right: 5px;
 }
 
+.text-align-last-center {
+  text-align-last: center;
+}
+
 .section-heading {
   color: #e1342e;
   font-size: 35px;
@@ -236,7 +240,7 @@ body {
 .achievment-section {
   border-radius: 0 200px 200px 0;
   margin-right: 40px;
-  box-shadow: inset -40px 0px 50px #1f283057;
+  /* box-shadow: inset -40px 0px 50px #1f283057; */
   padding: 100px 0 !important;
 }
 
@@ -608,7 +612,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 .goto-link-btn-area {
   margin-top: 60px;
-  
+
 }
 
 .goto-link-btn-area h6 {

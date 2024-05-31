@@ -211,6 +211,7 @@ function App() {
         <span class="loader"></span>
       </div>
 
+      {/* heder section */}
       <header className={`header-area overflow-hidden ${scrolled ? 'scrolled' : ''}`}>
         <nav>
           <div className="container">
@@ -241,7 +242,9 @@ function App() {
           </div>
         </nav>
       </header>
+      {/*  */}
 
+      {/* hero section */}
       <section className="section-padding hero-section overflow-hidden init-section" id="top">
         <div className="container-fluid">
           <div className="hero-container">
@@ -263,14 +266,16 @@ function App() {
           </div>
         </div>
       </section>
+      {/*  */}
 
+      {/* about section */}
       <section className="section-padding overflow-hidden position-relative" id="about">
         <div className="container">
           <div className="row">
             <div className="col-12 col-xxl-6 col-xl-6">
               <div className="about-us-container w-100 pe-xl-5">
                 <h6 className="section-label" data-aos="fade-left">About us</h6>
-                <h3 className="section-heading mb-5" data-aos="zoom-out">Journey with P.P.T</h3>
+                <h3 className="section-heading mb-4 mb-xxl-5" data-aos="zoom-out">Journey with P.P.T</h3>
                 <p className="section-para mt-4" data-aos="fade">
                   PPT Travels and tours, a renowned name in the travel industry of Sri Lanka is a specialized bus service that provides many travel opportunities to both local and foreign travelers. Known as the PPT express by its many customers in Sri Lanka, we at PPT travels has been leading the way for many years and setting standards along the way for Bus services all around the country.
                 </p>
@@ -286,33 +291,35 @@ function App() {
           </div>
         </div>
       </section>
+      {/*  */}
 
+      {/* achievements section */}
       <section className="section-padding achievment-section bg-gray position-relative overflow-hidden" data-aos="fade-right">
         <div className="container">
           <div className="row">
-            <div className="col-12 col-xl-3 col-md-6">
-              <div className="achievment-area">
+            <div className="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6">
+              <div className="achievment-area text-center mb-5 text-lg-start mb-sm-5 mb-lg-0">
                 <h1 className="achievment-count" data-target="55">0</h1>
                 <h6 className="achievment">Buses in Fleet</h6>
               </div>
             </div>
 
-            <div className="col-12 col-xl-3 col-md-6">
-              <div className="achievment-area">
+            <div className="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6">
+              <div className="achievment-area text-center mb-5 text-lg-start mb-sm-5 mb-lg-0">
                 <h1 className="achievment-count" data-target="25">0</h1>
                 <h6 className="achievment">Years of Service</h6>
               </div>
             </div>
 
-            <div className="col-12 col-xl-3 col-md-6">
-              <div className="achievment-area">
+            <div className="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6">
+              <div className="achievment-area text-center mb-5 mb-sm-0 text-lg-start">
                 <h1 className="achievment-count" data-target="150">0</h1>
                 <h6 className="achievment">Destinations Covered</h6>
               </div>
             </div>
 
-            <div className="col-12 col-xl-3 col-md-6">
-              <div className="achievment-area">
+            <div className="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-6">
+              <div className="achievment-area text-center text-lg-start">
                 <h1 className="achievment-count" data-target="50">0</h1>
                 <h6 className="achievment">Daily Departures</h6>
               </div>
@@ -320,14 +327,16 @@ function App() {
           </div>
         </div>
       </section>
+      {/*  */}
 
+      {/* chat section */}
       <section className="section-padding chat-section position-relative overflow-hidden" id="chat">
         <div className="container">
           <div className="row">
             <div className="col-12 col-xl-7">
               <div className="about-us-container w-100 pe-xl-5">
                 <h6 className="section-label" data-aos="fade-left">Chat</h6>
-                <h3 className="section-heading mb-5" data-aos="zoom-out">
+                <h3 className="section-heading mb-4 mb-xxl-5" data-aos="zoom-out">
                   Instant Assistance with Our ChatBot
                 </h3>
                 <p className="section-para mt-4" data-aos="fade">
@@ -450,6 +459,7 @@ function App() {
           </div>
         </div>
       </section>
+      {/*  */}
 
       {/* ///////////////////////// */}
       {/* <div className="App">
@@ -544,6 +554,7 @@ function App() {
       </div> */}
       {/* ///////////////////// */}
 
+      {/* services section */}
       <div className="container-fluid overflow-hidden">
         <section className="section-padding services-section" id="services">
           <div className="container">
@@ -554,11 +565,11 @@ function App() {
                   <h3 className="section-heading with-shadow text-center mb-5" data-aos="zoom-out">
                     Comprehensive Travel Services by P.P.T Travels & Tours
                   </h3>
-                  <p className="section-para mt-4 text-gray text-center" data-aos="fade">
+                  <p className="section-para mt-4 text-gray text-align-last-center" data-aos="fade">
                     At P.P.T Travels & Tours, we are dedicated to providing a full spectrum of top-notch services to fulfill all your travel and transport requirements. Our diverse range of offerings ensures that every aspect of your journey is covered with professionalism, reliability, and a commitment to excellence.
                   </p>
 
-                  <p className="section-para text-gray text-center" data-aos="fade">
+                  <p className="section-para text-gray text-align-last-center" data-aos="fade">
                     Explore the comprehensive suite of services we offer at P.P.T Travels & Tours. Each service is designed to provide you with a seamless, enjoyable, and memorable travel experience. We are here to ensure that every detail of your journey is handled with the utmost care and precision, so you can travel with confidence and peace of mind. Let P.P.T Travels & Tours be your trusted partner in all your travel and transport endeavors.Here’s an in-depth look at what we provide:
                   </p>
                 </div>
@@ -609,7 +620,9 @@ function App() {
           </div>
         </section>
       </div>
+      {/*  */}
 
+      {/* contact section */}
       <section className="section-padding contact-section overflow-hidden" id="contact">
         <div className="container">
           <div className="row">
@@ -764,7 +777,9 @@ function App() {
           </div>
         </div>
       </section>
+      {/*  */}
 
+      {/* footer section */}
       <footer className="footer-section">
         <div className="container">
           <div className="row">
@@ -793,6 +808,7 @@ function App() {
           </div>
         </div>
       </footer>
+      {/*  */}
 
       <button class={`back-to-top d-flex align-items-center justify-content-center ${backToTopActive ? 'active' : ''}`}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
