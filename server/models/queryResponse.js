@@ -7,10 +7,10 @@ const queryResponseSchema = new Schema(
       required: [true, "Query must be provided"]
     },
     response: {
-        type: String,
-        required: [true, "Response must be provided"]
-      },
-   
+      type: String,
+      required: [true, "Response must be provided"]
+    },
+
   },
   { timestamps: true }
 );

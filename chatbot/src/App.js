@@ -84,7 +84,7 @@ function App() {
 
   const sendMessage = async (messageDetail) => {
     try {
-      const response = await axios.post('https://skillety-n6r1.onrender.com/contact', messageDetail, {
+      const response = await axios.post('http://localhost:8000/api/query/contact', messageDetail, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -516,7 +516,7 @@ function App() {
                       autoFocus
                     ></textarea>
 
-                    <button className='btn msg-send-btn' disabled={userMessage === ""}
+                    <button className='btn msg-send-btn' disabled={userMessage.trim() === ""}
                       onClick={() => fetchResponseForQuery()}>
                       <i class="bi bi-send"></i>
                     </button>
@@ -552,99 +552,6 @@ function App() {
         </div>
       </section>
       {/*  */}
-
-      {/* ///////////////////////// */}
-      {/* <div className="App">
-        <div className="wrapper">
-          <div className="content">
-            <div className="header">
-              <div className="img">
-                <img src={image} alt="" />
-              </div>
-              <div className="right">
-                <div className="name">ChatBot</div>
-                <div className="status">Active</div>
-              </div>
-            </div>
-
-
-            {errorMessage && (
-              <div className="alert alert-danger mt-3" role="alert">
-                {errorMessage}
-              </div>
-            )}
-
-            <ScrollToBottom className="chat-body">
-              {queryResponse.length > 0 &&
-                queryResponse.map((qr, index) => {
-                  return (
-                    <div className="main" key={index}>
-                      <div className="main_content">
-                        <div className="messages">
-                          {qr.query && (
-                            <div className="human-message" id="message2">
-                              <p>{qr?.query}</p>
-                            </div>
-                          )}
-                          <div className="bot-message" id="message1">
-                            <p>{qr?.response}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-            </ScrollToBottom>
-
-            <div className="bottom">
-              <div className="btm">
-                <div className="input">
-                  <input
-                    type="text"
-                    id="input"
-                    placeholder="Enter your message"
-                    value={userMessage}
-                    onChange={handleChange}
-                    onKeyPress={(e) => {
-                      if (e.key === "Enter") {
-                        fetchResponseForQuery();
-                      }
-                    }}
-                  />
-
-                  {queries.length > 0 && userMessage && (
-                    <div className="seach-dropdown-area">
-                      {queries.map((query, index) => {
-                        return (
-                          <div
-                            className="seach-dropdown-data"
-                            key={index}
-                            onClick={() => {
-                              // setSelectedQuery(query);
-                              setQueries([]);
-                              fetchResponseForQuery(query)
-                            }}
-                          >
-                            {query}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-                <div className="btn">
-                  <button
-                    onClick={() => fetchResponseForQuery()} // disabled={!userMessage}
-                  >
-                    <i className="fas fa-paper-plane me-2"></i>Send
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-      {/* ///////////////////// */}
 
       {/* services section */}
       <div className="container-fluid overflow-hidden">
@@ -881,16 +788,16 @@ function App() {
           <div className="row">
             <div className="col-12">
               <div className="footer-content-container">
-                <a href="#top" onClick={(e) => handleNavClick(e, 'top')} className="footer-logo-link">
+                <a href="#top" onClick={(e) => handleNavClick(e, 'top')} data-aos="fade-up" className="footer-logo-link">
                   <img src="../logo.png" className="nav-logo" alt="" />
                   <span>P.P.T</span> Travels & Tours
                 </a>
 
-                <p className="footer-desc mt-5">
+                <p className="footer-desc mt-5" data-aos="fade-up">
                   Thank you for visiting P.P.T Travels & Tours. We are dedicated to providing top-tier travel and transport services across Sri Lanka. From luxury bus travel to reliable courier services, air ticketing, and customized transport solutions, our mission is to make your journey seamless and enjoyable.
                 </p>
 
-                <p className="footer-desc mb-4">
+                <p className="footer-desc mb-4" data-aos="fade-up">
                   Stay connected with us through our social media channels for the latest updates and offers. If you have any questions or need assistance, don’t hesitate to reach out through our contact form or customer support. We look forward to serving you and making every trip a memorable one.
                 </p>
 

@@ -1,22 +1,23 @@
 const QueryResponse = require("../models/queryResponse");
+const contactDetail = require("../models/contact");
 
-const creatingQueryResponse = async(req, res) => {
-    try{
-        const {query, response} = req.body;
-        const newQueryResponse = new QueryResponse({
-            query,
-            response
-        })
-        await newQueryResponse.save();
-        res.status(201).json({
-            message: "Query response created successfully",
-            data: newQueryResponse
-        });
-    }catch(err){
-        res.status(500).json({
-            error: err.message
-        })
-    }
+const creatingQueryResponse = async (req, res) => {
+  try {
+    const { query, response } = req.body;
+    const newQueryResponse = new QueryResponse({
+      query,
+      response
+    })
+    await newQueryResponse.save();
+    res.status(201).json({
+      message: "Query response created successfully",
+      data: newQueryResponse
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err.message
+    })
+  }
 }
 
 const gettingQueryResponses = async (req, res) => {
@@ -29,7 +30,7 @@ const gettingQueryResponses = async (req, res) => {
 
     // Check if the userInput contains keywords related to date
     const dateKeywords = ["today", "date", "current date", "today's date"];
-    const containsDateKeyword = userInput && dateKeywords.some(keyword => 
+    const containsDateKeyword = userInput && dateKeywords.some(keyword =>
       new RegExp(keyword, 'i').test(userInput)
     );
 
@@ -77,12 +78,14 @@ const gettingSuggestionQueryResponse = async (req, res) => {
       { $match: { query: { $elemMatch: { $regex: regex } } } },
       { $unwind: "$query" },
       { $match: { query: { $regex: regex } } },
-      { $group: {
+      {
+        $group: {
           _id: null,
           allQueries: { $push: "$query" }
         }
       },
-      { $project: {
+      {
+        $project: {
           _id: 0,
           allQueries: 1
         }
@@ -96,10 +99,37 @@ const gettingSuggestionQueryResponse = async (req, res) => {
     });
   }
 }
-  
+
+/* contact detail posting */
+const contactMessage = async (req, res) => {
+  console.log(req.body);
+  try {
+    const newContactMessage = new contactDetail({
+      ...req.body,
+    });
+    await newContactMessage.save();
+    console.log(newContactMessage);
+    return res.status(201).json(newContactMessage);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+}
+
+const getAllContactMessages = async (req, res) => {
+  try {
+    const allContactMessages = await contactDetail.find();
+    console.log(allContactMessages);
+    return res.status(200).json(allContactMessages);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+};
+
 
 module.exports = {
-    creatingQueryResponse,
-    gettingQueryResponses,
-    gettingSuggestionQueryResponse
+  creatingQueryResponse,
+  gettingQueryResponses,
+  gettingSuggestionQueryResponse,
+  contactMessage,
+  getAllContactMessages
 }

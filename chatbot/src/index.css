@@ -889,10 +889,12 @@ input:-moz-autofill {
 
 .swal2-title {
   color: #FFF !important;
+  font-size: 22px !important;
 }
 
 .swal2-html-container {
   color: #DDD !important;
+  font-size: 15px !important;
 }
 
 .chat-alert-msg {
