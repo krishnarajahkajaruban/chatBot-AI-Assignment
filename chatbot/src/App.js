@@ -333,7 +333,7 @@ function App() {
       <section className="section-padding chat-section position-relative overflow-hidden" id="chat">
         <div className="container">
           <div className="row">
-            <div className="col-12 col-xl-7">
+            <div className="col-12 col-xl-7 col-lg-6">
               <div className="about-us-container w-100 pe-xl-5">
                 <h6 className="section-label" data-aos="fade-left">Chat</h6>
                 <h3 className="section-heading mb-4 mb-xxl-5" data-aos="zoom-out">
@@ -361,7 +361,7 @@ function App() {
               </div>
             </div>
 
-            <div className="col-12 col-xl-5">
+            <div className="col-12 col-xl-5 col-lg-6 col-md-10 mx-md-auto">
               <div className="card chat--card right" id={`${window.innerWidth <= 991 ? 'chat_window' : ''}`} data-aos="fade-up" data-aos-duration="1500">
                 <div className="card-header chatting-card-header">
                   <div className="chat-header-image-area">
@@ -562,7 +562,7 @@ function App() {
               <div className="col-12">
                 <div className="services-container w-100">
                   <h6 className="section-center-label" data-aos="fade-down">Services</h6>
-                  <h3 className="section-heading with-shadow text-center mb-5" data-aos="zoom-out">
+                  <h3 className="section-heading with-shadow text-center mb-4 mb-xxl-5" data-aos="zoom-out">
                     Comprehensive Travel Services by P.P.T Travels & Tours
                   </h3>
                   <p className="section-para mt-4 text-gray text-align-last-center" data-aos="fade">
@@ -626,10 +626,10 @@ function App() {
       <section className="section-padding contact-section overflow-hidden" id="contact">
         <div className="container">
           <div className="row">
-            <div className="col-12 col-xl-6">
+            <div className="col-12 col-xl-6 col-lg-5">
               <div className="contact-content-container">
                 <h6 className="section-label" data-aos="fade-left">Contact</h6>
-                <h3 className="section-heading mb-5" data-aos="zoom-out">
+                <h3 className="section-heading mb-4 mb-xxl-5" data-aos="zoom-out">
                   Get in Touch with P.P.T Travels & Tours
                 </h3>
 
@@ -637,7 +637,7 @@ function App() {
                   At P.P.T Travels & Tours, we value your inquiries and are committed to providing you with the best possible service. Whether you have questions about our services, need assistance with bookings.
                 </p>
 
-                <div className="contact-content mb-4" data-aos="fade-up">
+                <div className="contact-content mb-3 mb-xl-4" data-aos="fade-up">
                   <div className="contact-icon-area">
                     <i className="bi bi-envelope-fill"></i>
                   </div>
@@ -714,7 +714,7 @@ function App() {
               </div>
             </div>
 
-            <div className="col-12 col-xl-6 ps-xl-5">
+            <div className="col-12 col-xl-6 col-lg-7 ps-xl-5">
               <div className="contact-form-container" data-aos="fade-up">
                 <h4 className="form-title mb-4">Let's Connect! & Contact</h4>
                 <p className="form-desc">
