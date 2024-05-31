@@ -372,7 +372,7 @@ ul {
     border-radius: 50%;
 }
 
-.chat-input-group{
+.chat-input-group {
     position: relative;
     width: 100%;
 }
@@ -534,20 +534,46 @@ ul {
 .message-input {
     height: auto !important;
     border-radius: 10px !important;
-    font-size: 15px !important;
+    font-size: 14px !important;
     transition: ease-in-out 0.5s !important;
-    padding: 15px 15px !important;
+    padding: 10px 15px !important;
     border: #714F36 1px solid;
     color: #FFF !important;
     border: 1px solid #e0f1ff !important;
     background: linear-gradient(328deg, rgb(64 79 95) 0%, rgb(101 121 140) 100%);
 }
 
+textarea.message-input {
+    min-height: 80px !important;
+    padding-right: 60px !important;
+    resize: none;
+}
+
+textarea.message-input::-webkit-scrollbar {
+    background-color: transparent;
+    border-radius: 10px;
+    width: 5px;
+    height: 5px;
+}
+
+textarea.message-input::-webkit-scrollbar-thumb {
+    background-color: #adbdc9;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+textarea.message-input::-webkit-scrollbar-track {
+    background-color: initial;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+
 .message-input::placeholder {
     color: #cacaca !important;
 }
 
-.loading-chat{
+.loading-chat {
     display: flex;
     gap: 2px;
 }
@@ -570,8 +596,9 @@ ul {
     border-radius: 8px !important;
     position: absolute;
     right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    bottom: 10px;
+    /* top: 50%;
+    transform: translateY(-50%); */
     transition: ease-in-out 0.5s !important;
     font-size: 15px !important;
     color: #FFF;
@@ -602,8 +629,9 @@ ul {
 }
 
 .msg-send-btn:disabled {
-    background-color: #cbcbcb !important;
+    background-color: #dbdbdb !important;
     cursor: not-allowed !important;
+    pointer-events: all !important;
     border: none !important;
     box-shadow: inset 0px 0px 5px #a9a9a9 !important;
 }
@@ -684,7 +712,7 @@ ul {
 .chat-message-content p {
     margin: 0 !important;
     font-size: 14px !important;
-    line-height: 1.5rem !important;
+    line-height: 1.4rem !important;
 }
 
 .chat--message-container.send .chat-message-content {
@@ -852,7 +880,7 @@ ul {
 }
 
 .chatting-card-body button:hover {
-    background-color: #404f5f  !important;
+    background-color: #404f5f !important;
 }
 
 .chatting-card-body button:focus,
@@ -891,8 +919,8 @@ ul {
 
 .chat-short-cut {
     position: absolute;
-    right: 65px;
-    top: 45%;
+    right: 60px;
+    bottom: 0px;
     transform: translateY(-50%);
     transition: all 0.5s;
     opacity: 1;

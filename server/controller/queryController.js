@@ -53,7 +53,7 @@ const gettingQueryResponses = async (req, res) => {
       return res.status(200).json({ response: queryResponse.response });
     } else {
       return res.status(200).json({
-        response: "I'm sorry, but I don't understand what you're asking. Could you please contact the Sri Lankan Travel Agency for more information? Hotline : 021-568-9548, Email : lta@agent.com, Website : sltravelagency.lk."
+        response: "I'm sorry, but I don't understand what you're asking. Could you please contact the P.P.T Travels & Tours for more information? Hotline : 011-236-4999, Email : info@ppttravel.com, Website : www.ppttravel.com."
       });
     }
 

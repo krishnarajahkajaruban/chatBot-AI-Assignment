@@ -570,7 +570,7 @@ textarea.custom-form-input {
   margin: 0;
   padding: 0;
   padding-left: 10px;
-  display: none;
+  /* display: none; */
 }
 
 .form-button {
@@ -867,4 +867,58 @@ input:-moz-autofill {
   100% {
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
   }
+}
+
+.swal2-popup {
+  border-radius: 20px;
+  border: 1px solid #FFF !important;
+  background-color: #36424eb4 !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px) !important;
+}
+
+.swal2-confirm {
+  border-radius: 10px !important;
+}
+
+.swal2-success-circular-line-left,
+.swal2-success-circular-line-right,
+.swal2-success-fix {
+  background-color: transparent !important;
+}
+
+.swal2-title {
+  color: #FFF !important;
+}
+
+.swal2-html-container {
+  color: #DDD !important;
+}
+
+.chat-alert-msg {
+  position: absolute !important;
+  z-index: 6 !important;
+  border-radius: 30px !important;
+  background-color: #e1342ee7 !important;
+  border: none !important;
+  color: #EEE !important;
+  font-size: 13px !important;
+  padding: 10px 50px !important;
+  box-shadow: 0px 10px 30px #29344157 !important;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px) !important;
+  top: 90px;
+  transition: ease 0.8s;
+  text-wrap: nowrap !important;
+}
+
+.chat-alert-msg .btn-close {
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  right: 15px !important;
+  filter: invert(1);
 }

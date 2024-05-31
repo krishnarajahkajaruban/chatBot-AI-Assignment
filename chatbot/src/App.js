@@ -12,6 +12,8 @@ import 'aos/dist/aos.css';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import ScrollToBottom from 'react-scroll-to-bottom';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
 
 
 function App() {
@@ -28,6 +30,86 @@ function App() {
   // const [selectedQuery, setSelectedQuery] = useState("");
   // const [loadingMessage, setLoadingMessage] = useState(false);
 
+
+  //for show success message
+  function showSuccessMessage(message) {
+    Swal.fire({
+      title: 'Success!',
+      text: message,
+      icon: 'success',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK',
+    });
+  }
+
+  //for show error message
+  function showErrorMessage(message) {
+    Swal.fire({
+      title: 'Error!',
+      text: message,
+      icon: 'error',
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'OK',
+    });
+  }
+
+  const initialCredentials = {
+    fullName: "",
+    email: "",
+    phoneNo: "",
+    message: "",
+  }
+
+  const [credentials, setCredentials] = useState(initialCredentials);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    if (name === "phoneNo" && value.length === 11) {
+      return;
+    }
+
+    setCredentials({ ...credentials, [name]: value });
+  }
+
+  useEffect(() => {
+    if (errorMessage) {
+      const timer = setTimeout(() => {
+        setErrorMessage('');
+      }, 8000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [errorMessage]);
+
+  const sendMessage = async (messageDetail) => {
+    try {
+      const response = await axios.post('https://skillety-n6r1.onrender.com/contact', messageDetail, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const result = response.data;
+
+      if (!result.error) {
+        console.log(result);
+        showSuccessMessage("Your message is recieved.One of our agent will contact you shortly")
+        setCredentials(initialCredentials);
+      } else {
+        console.log(result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(credentials);
+
+    sendMessage(credentials);
+  };
 
   /////
   useEffect(() => {
@@ -363,6 +445,14 @@ function App() {
 
             <div className="col-12 col-xl-5 col-lg-6 col-md-10 mx-md-auto">
               <div className="card chat--card right" id={`${window.innerWidth <= 991 ? 'chat_window' : ''}`} data-aos="fade-up" data-aos-duration="1500">
+
+                {errorMessage && (
+                  <div class="alert alert-danger alert-dismissible chat-alert-msg fade show" role="alert">
+                    {errorMessage}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" onClick={() => setErrorMessage('')} aria-label="Close"></button>
+                  </div>
+                )}
+
                 <div className="card-header chatting-card-header">
                   <div className="chat-header-image-area">
                     <img src={image} alt="Bot Icon" className="chatting-person-image" />
@@ -410,21 +500,23 @@ function App() {
 
                 <div className="card-footer chatting-card-footer">
                   <div className="chat-input-group">
-                    <input type="search"
+                    <textarea type="search"
                       value={userMessage}
                       className='form-control message-input'
                       placeholder='Enter the message here...'
                       onChange={handleChange}
                       onKeyPress={(e) => {
-                        if (e.key === "Enter") {
+                        if (e.key === "Enter" && userMessage.trim() !== '') {
                           fetchResponseForQuery();
+                        } else if (e.key === "Enter") {
+                          e.preventDefault();
                         }
                       }}
                       ref={chatInputRef}
                       autoFocus
-                    />
+                    ></textarea>
 
-                    <button className='btn msg-send-btn'
+                    <button className='btn msg-send-btn' disabled={userMessage === ""}
                       onClick={() => fetchResponseForQuery()}>
                       <i class="bi bi-send"></i>
                     </button>
@@ -721,45 +813,49 @@ function App() {
                   We're excited to hear from you! Whether you have a question, need assistance, or want to share your feedback, our team at P.P.T Travels & Tours is here to help. Fill out the form below with your details and message, and we'll get back to you promptly. Your inquiries are our priority, and we're dedicated to providing you with exceptional service
                 </p>
                 <hr className="text-light" />
-                <form action="" className="contact-form">
+                <form action="" className="contact-form" onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="col-12">
                       <div className="form-group">
-                        <label htmlFor="name" className="form-label custom-label">Name :</label>
-                        <input type="text" name="name" id="name" className="form-control custom-form-input" placeholder="Enter your name.." required />
-                        <span className="error-message">
+                        <label htmlFor="full_name" className="form-label custom-label">Full Name :</label>
+                        <input type="text" name="fullName" id="full_name" className="form-control custom-form-input"
+                          value={credentials.fullName} onChange={handleInputChange} placeholder="Enter your full name.." required />
+                        {/* <span className="error-message">
                           This field is required
-                        </span>
+                        </span> */}
                       </div>
                     </div>
 
                     <div className="col-12">
                       <div className="form-group mt-4">
                         <label htmlFor="email" className="form-label custom-label">Email :</label>
-                        <input type="email" name="email" id="email" className="form-control custom-form-input" placeholder="Enter your email.." required />
-                        <span className="error-message">
+                        <input type="email" name="email" id="email" className="form-control custom-form-input"
+                          value={credentials.email} onChange={handleInputChange} placeholder="Enter your email.." required />
+                        {/* <span className="error-message">
                           This field is required
-                        </span>
+                        </span> */}
                       </div>
                     </div>
 
                     <div className="col-12">
                       <div className="form-group mt-4">
-                        <label htmlFor="phone_number" className="form-label custom-label">Phone Number :</label>
-                        <input type="number" name="phone_number" id="phone_number" className="form-control custom-form-input" placeholder="Enter your phone number.." required />
-                        <span className="error-message">
+                        <label htmlFor="phone_no" className="form-label custom-label">Phone Number :</label>
+                        <input type="number" name="phoneNo" id="phone_no" className="form-control custom-form-input"
+                          value={credentials.phoneNo} onChange={handleInputChange} placeholder="Enter your phone number.." min="0" required />
+                        {/* <span className="error-message">
                           This field is required
-                        </span>
+                        </span> */}
                       </div>
                     </div>
 
                     <div className="col-12">
                       <div className="form-group mt-4">
                         <label htmlFor="message" className="form-label custom-label">Message :</label>
-                        <textarea id="message" name="message" className="form-control custom-form-input" placeholder="Enter the message.." required></textarea>
-                        <span className="error-message">
+                        <textarea id="message" name="message" className="form-control custom-form-input"
+                          value={credentials.message} onChange={handleInputChange} placeholder="Enter the message.." required></textarea>
+                        {/* <span className="error-message">
                           This field is required
-                        </span>
+                        </span> */}
                       </div>
                     </div>
 
