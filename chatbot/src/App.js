@@ -485,7 +485,7 @@ function App() {
                               key={index}>
                               <div className="chat--message-area">
                                 <div className="chat-message-content">
-                                  <p>{qr?.response}</p>
+                                  <p dangerouslySetInnerHTML={{ __html: qr?.response }}/>
                                 </div>
                               </div>
                               <img src={bot_avatar} alt="Bot Avatar"

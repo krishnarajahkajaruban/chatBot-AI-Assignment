@@ -766,6 +766,15 @@ textarea.message-input::-webkit-scrollbar-track {
     color: #000000 !important;
 }
 
+.chat--message-container.receive .chat-message-content p a {
+    color: #1465ab !important;
+    transition: ease 0.5s !important;
+}
+
+.chat--message-container.receive .chat-message-content p a:hover {
+    color: #e1342e !important;
+}
+
 .chat-avatar {
     width: 45px;
     height: 45px;
